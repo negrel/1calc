@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<!-- <link rel="icon" type="image/svg+xml" href="/" /> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>1Calc</title>
+	<script type="module" src="/src/main.ts"></script>
+</head>
+
+<body>
+	<main id="app">
+		<div id="screen">
+			<p id="expression"></p>
+			<p id="result"></p>
+		</div>
+		<div id="keypad">
+			<div class="row">
+				<button class="key key-special" onclick="clearAll()">AC</button>
+				<button class="key key-special" onclick="clear()">C</button>
+				<button class="key key-special" onclick="">±</button>
+				<button class="key key-special" onclick="">%</button>
+			</div>
+			<div class="row">
+				<button class="key">7</button>
+				<button class="key">8</button>
+				<button class="key">9</button>
+				<button class="key key-operator" onclick="operator('/')">÷</button>
+			</div>
+			<div class="row">
+				<button class="key">4</button>
+				<button class="key">5</button>
+				<button class="key">6</button>
+				<button class="key key-operator" onclick="operator('*')">×</button>
+			</div>
+			<div class="row">
+				<button class="key">1</button>
+				<button class="key">2</button>
+				<button class="key">3</button>
+				<button class="key key-operator" onclick="operator('-')">−</button>
+			</div>
+			<div class="row">
+				<button class="key">0</button>
+				<button class="key">.</button>
+				<button class="key key-compute" onclick="compute()">=</button>
+				<button class="key key-operator" onclick="operator('+')">+</button>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

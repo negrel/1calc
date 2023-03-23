@@ -1,0 +1,91 @@
+:root {
+  --bg: #22252d;
+  --bg-secondary: #292d36;
+  --fg: #fbfbfb;
+  --key-bg: #22262d;
+  --key-operator-fg: #eb6666;
+  --key-special-fg: #26f2ce;
+
+  --key-spacing: 16px;
+  --key-border-radius: 16px;
+  --key-size: 64px;
+}
+
+body {
+  margin: 0px;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+}
+
+#screen {
+  flex: 1;
+  padding: 1rem;
+  font: sans-serif;
+}
+
+#screen > p {
+  color: var(--fg);
+  text-align: right;
+}
+
+#result {
+  font-size: 2rem;
+}
+
+#keypad {
+  background-color: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-top-left-radius: calc(var(--key-border-radius) + var(--key-spacing));
+  border-top-right-radius: 32px;
+  padding-left: var(--key-spacing);
+  padding-bottom: var(--key-spacing);
+  max-width: 320px;
+  max-height: 400px;
+  margin: auto;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.key {
+  background-color: var(--key-bg);
+  color: var(--fg);
+  border: none;
+  border-radius: var(--key-border-radius);
+  cursor: pointer;
+  margin: var(--key-spacing) var(--key-spacing) 0 0;
+  width: var(--key-size);
+  min-width: var(--key-size);
+  max-width: var(--key-size);
+  height: 64px;
+  height: 4rem;
+  font-size: 1rem;
+}
+
+.key:active {
+  mix-blend-mode: color-dodge;
+}
+
+.key.key-operator {
+  color: var(--key-operator-fg);
+}
+
+.key.key-special {
+  color: var(--key-special-fg);
+}
+
+.key.key-compute {
+  color: var(--key-fg);
+  background-color: var(--key-special-fg);
+}
