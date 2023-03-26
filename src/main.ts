@@ -1,5 +1,5 @@
 import '@csstools/normalize.css'
-import { compute } from 'mep'
+import { compute, Lexer, TokenType } from 'mep'
 
 import './style.css'
 import State from './State'
@@ -10,6 +10,8 @@ declare global {
     clear: () => void
     clearAll: () => void
     compute: () => void
+    lightTheme: () => void
+    darkTheme: () => void
   }
 }
 
@@ -23,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const expression = new State({
     initial: '',
     onChange: (_oldValue, newValue) => {
-      expressionElement.textContent = newValue
+      expressionElement.textContent = newValue.replaceAll('*', '×').replaceAll('/', '÷')
       resultElement.textContent = compute(newValue).toString()
     }
   })
@@ -38,6 +40,12 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   window.operator = (op: string) => {
+    const tokens = Lexer.lex(expression.get())
+    if (op.length === 0 || (tokens.length > 2 &&
+        tokens[tokens.length - 2].type === TokenType.OPERATOR)) {
+      return
+    }
+
     expression.set(`${expression.get()}${op}`)
   }
 
@@ -51,5 +59,37 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.compute = () => {
     expression.set(resultElement.textContent ?? '')
+  }
+
+  // Themes
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const lightThemeContainer = document.querySelector('#theme-light')!
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const darkThemeContainer = document.querySelector('#theme-dark')!
+  window.lightTheme = () => {
+    document.body.className = ''
+    lightThemeContainer.className = 'theme-active'
+    darkThemeContainer.className = ''
+    localStorage.setItem('theme', 'light')
+  }
+
+  window.darkTheme = () => {
+    document.body.className = 'dark'
+    darkThemeContainer.className = 'theme-active'
+    lightThemeContainer.className = ''
+    localStorage.setItem('theme', 'dark')
+  }
+
+  // Default to browser preference
+  const currentTheme = localStorage.getItem('theme') ??
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+  switch (currentTheme) {
+    case 'dark':
+      window.darkTheme()
+      break
+
+    case 'light':
+    default:
+      window.lightTheme()
   }
 })

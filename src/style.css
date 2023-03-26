@@ -1,14 +1,29 @@
 :root {
-  --bg: #22252d;
-  --bg-secondary: #292d36;
-  --fg: #fbfbfb;
-  --key-bg: #22262d;
-  --key-operator-fg: #eb6666;
-  --key-special-fg: #26f2ce;
+  --bg: #fbfbfb;
+  --bg-secondary: #f0f0f0;
+  --fg: #22252d;
+  --fg-secondary: #9197a5;
+  --key-bg: #e9e9e9;
+  --key-operator-fg: rgb(220 38 38);
+  --key-special-fg: rgb(74 222 128);
 
   --key-spacing: 16px;
   --key-border-radius: 16px;
   --key-size: 64px;
+}
+
+.dark * {
+  --bg: #22252d;
+  --bg-secondary: #292d36;
+  --fg: #fbfbfb;
+  --fg-secondary: #bfbec0;
+  --key-bg: #22262d;
+  --key-operator-fg: #eb6666;
+  --key-special-fg: rgb(74 222 128);
+}
+
+* {
+	box-sizing: border-box;
 }
 
 body {
@@ -20,6 +35,34 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--bg);
+}
+
+#theme {
+	display: flex;
+	margin: 1em auto;
+	background-color: var(--bg-secondary);
+	border-radius: var(--key-border-radius);
+	align-items: center;
+}
+
+#theme * {
+	display: flex;
+	align-items: center;
+	margin: .25em .4em;
+}
+
+#theme svg {
+	height: auto;
+	width: 1.5em;
+	fill: var(--fg-secondary);
+}
+
+#theme svg:hover {
+	cursor: pointer;
+}
+
+#theme .theme-active svg {
+	fill: var(--fg);
 }
 
 #screen {
@@ -46,8 +89,6 @@ body {
   border-top-right-radius: 32px;
   padding-left: var(--key-spacing);
   padding-bottom: var(--key-spacing);
-  max-width: 320px;
-  max-height: 400px;
   margin: auto;
 }
 
@@ -68,7 +109,6 @@ body {
   width: var(--key-size);
   min-width: var(--key-size);
   max-width: var(--key-size);
-  height: 64px;
   height: 4rem;
   font-size: 1rem;
 }
@@ -78,14 +118,41 @@ body {
 }
 
 .key.key-operator {
+	font-weight: bold;
   color: var(--key-operator-fg);
 }
 
 .key.key-special {
+	font-weight: bold;
   color: var(--key-special-fg);
 }
 
 .key.key-compute {
   color: var(--key-fg);
   background-color: var(--key-special-fg);
+}
+
+/* Small screen */
+@media screen and (min-width: 640px) {
+
+}
+
+/* Medium screen */
+@media screen and (min-width: 768px) {
+
+}
+
+/* Large screen */
+@media screen and (min-width: 1024px) {
+
+}
+
+/* XL screen */
+@media screen and (min-width: 1280px) {
+
+}
+
+/* 2XL screen */
+@media screen and (min-width: 1536px) {
+
 }
