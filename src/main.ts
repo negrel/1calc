@@ -7,7 +7,7 @@ import State from './State'
 declare global {
   interface Window {
     operator: (op: string) => void
-    clear: () => void
+    clearOne: () => void
     clearAll: () => void
     compute: () => void
     lightTheme: () => void
@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
     expression.set(`${expression.get()}${op}`)
   }
 
-  window.clear = () => {
+  window.clearOne = () => {
     expression.set(expression.get().slice(0, -1))
   }
 
