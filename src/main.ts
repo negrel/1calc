@@ -1,8 +1,10 @@
 import '@csstools/normalize.css'
-import { compute, Lexer, TokenType } from 'mep'
+import * as mep from '@negrel/mep'
 
 import './style.css'
 import State from './State'
+
+const { compute, TokenType, Lexer } = mep.default
 
 declare global {
   interface Window {
