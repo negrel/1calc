@@ -3,6 +3,7 @@ import * as mep from '@negrel/mep'
 
 import './style.css'
 import State from './State'
+import './prisme-banner.js'
 
 const { compute, TokenType, Lexer } = mep.default
 

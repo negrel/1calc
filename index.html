@@ -11,9 +11,8 @@
 	<meta name="author" content="Alexandre Negrel">
 	<title>1Calc</title>
 	<script type="module" src="/src/main.ts"></script>
-	<script src="https://app.prismeanalytics.com/m.js" data-prisme-verification-id="4bd02b97-e1cd-46ba-a186-1f41df8f1a56"
-		async>
-		</script>
+	<script src="https://cdn.prismeanalytics.com/static/wa.js"
+		data-prisme-verification-id="4bd02b97-e1cd-46ba-a186-1f41df8f1a56" defer></script>
 </head>
 
 <body>
@@ -69,6 +68,29 @@
 			</div>
 		</div>
 	</main>
+	<div id="prisme-banner" data-closed="true">
+		<div className="bg-background p-4 border border-foreground space-y-2">
+			<div className="flex flex-col sm:flex-row items-center gap-4">
+				<a href="https://www.prismeanalytics.com">
+					<img loading="lazy" src="https://www.prismeanalytics.com/logo.jpg" className="w-16" />
+				</a>
+				<p>
+					This website uses
+					<a href="https://www.prismeanalytics.com" className="underline">
+						Prisme Analytics
+					</a>, a <span className="font-bold">privacy-friendly</span> analytics
+					service, to analyze its traffic.
+				</p>
+				<button class="key prisme-banner-close-btn hidden sm:block">
+					X
+				</button>
+			</div>
+			<button class="key prisme-banner-close-btn sm:hidden" style="width: 100%; max-width: 100%">
+				Ok
+			</button>
+		</div>
+	</div>
+
 </body>
 
 </html>
